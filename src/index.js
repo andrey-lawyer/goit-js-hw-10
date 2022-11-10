@@ -14,12 +14,10 @@ function onInput(event) {
   if (value.trim() == '') {
     return;
   }
-  const fethAnswer = fetchCountries(value.trim());
-  fethAnswer
-    .then(response => {
-      responseOk(response);
-      return response.json();
-    })
+  // const fethAnswer = fetchCountries(value.trim());
+  fetchCountries(value.trim())
+    // const arrayJson = fethAnswer.then(response => {
+
     .then(array => {
       if (array.length > 10) {
         oneMakesMarkup();
@@ -80,14 +78,14 @@ function threeMakesMarkup(array) {
   countryListEl.innerHTML = markup;
 }
 // Разметка, если в поиске - от 2 до 10 стран--------------------
-function responseOk(response) {
-  if (!response.ok) {
-    countryListEl.innerHTML = '';
-    countryInfoEl.innerHTML = '';
-    throw new Error(
-      Notiflix.Notify.failure(
-        `Error ${response.status}. Oops, there is no country with that name`
-      )
-    );
-  }
-}
+// export function responseOk(response) {
+//   if (!response.ok) {
+//     countryListEl.innerHTML = '';
+//     countryInfoEl.innerHTML = '';
+//     throw new Error(
+//       Notiflix.Notify.failure(
+//         `Error ${response.status}. Oops, there is no country with that name`
+//       )
+//     );
+//   }
+// }
