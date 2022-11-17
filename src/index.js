@@ -28,10 +28,14 @@ function onInput(event) {
         return;
       }
       threeMakesMarkup(array);
-    });
+    })
+    .catch(error =>
+      Notiflix.Notify.failure(
+        `Error ${error}. Oops, there is no country with that name`
+      )
+    );
 }
 
-// .catch(error => console.log(` ${error}`));
 function oneMakesMarkup() {
   countryListEl.innerHTML = '';
   countryInfoEl.innerHTML = '';
@@ -78,6 +82,7 @@ function threeMakesMarkup(array) {
   countryListEl.innerHTML = markup;
 }
 // Разметка, если в поиске - от 2 до 10 стран--------------------
+
 // export function responseOk(response) {
 //   if (!response.ok) {
 //     countryListEl.innerHTML = '';
